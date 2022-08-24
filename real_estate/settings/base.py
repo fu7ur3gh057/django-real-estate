@@ -127,6 +127,8 @@ import logging
 import logging.config
 from django.utils.log import DEFAULT_LOGGING
 
+AUTH_USER_MODEL = 'users.User'
+
 logger = logging.getLogger(__name__)
 LOG_LEVEL = "INFO"
 logging.config.dictConfig(
