@@ -10,13 +10,13 @@ DEFAULT_FROM_EMAIL = "info@real-estate.com"
 DOMAIN = "localhost:8500"
 SITE_NAME = "Real Estate"
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'estate',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'estate',
+#         'USER': 'postgres',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }

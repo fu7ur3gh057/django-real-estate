@@ -67,6 +67,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'real_estate.urls'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'estate',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
