@@ -53,7 +53,7 @@ class Property(TimeStampedUUIDModel):
     property_number = models.IntegerField(
         verbose_name=_("Property Number"),
         validators=[MinValueValidator(1)],
-        default="KG8 Avenue")
+        default=112)
     price = models.DecimalField(verbose_name=_("Price"), max_digits=8, decimal_places=2, default=0.0)
     tax = models.DecimalField(
         verbose_name=_("Property Tax"),
@@ -71,14 +71,15 @@ class Property(TimeStampedUUIDModel):
     total_floors = models.IntegerField(verbose_name=_("Number of floors"), default=0)
     bedrooms = models.IntegerField(verbose_name=_("Bedrooms"), default=1)
     bathrooms = models.DecimalField(verbose_name=_("Bathrooms"), max_digits=4, decimal_places=2, default=1.0)
-    advert_type = models.CharField(verbose_name=_("Advert Type"), max_length=50, choices=AdvertType.choices)
+    advert_type = models.CharField(verbose_name=_("Advert Type"), max_length=50, choices=AdvertType.choices,
+                                   default=AdvertType.FOR_SALE)
     property_type = models.CharField(verbose_name=_("Property Type"), max_length=50, choices=PropertyType.choices,
                                      default=PropertyType.OTHER)
     cover_photo = models.ImageField(verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True)
-    photo1 = models.ImageField(verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True)
-    photo2 = models.ImageField(verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True)
-    photo3 = models.ImageField(verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True)
-    photo4 = models.ImageField(verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True)
+    photo1 = models.ImageField(verbose_name=_("Photo 1"), default="/house_sample.jpg", null=True)
+    photo2 = models.ImageField(verbose_name=_("Photo 2"), default="/house_sample.jpg", null=True)
+    photo3 = models.ImageField(verbose_name=_("Photo 3"), default="/house_sample.jpg", null=True)
+    photo4 = models.ImageField(verbose_name=_("Photo 4"), default="/house_sample.jpg", null=True)
     published_status = models.BooleanField(verbose_name=_("Published Status"), default=False)
     views = models.IntegerField(verbose_name=_("Total Views"), default=0)
     objects = models.Manager()
@@ -93,7 +94,7 @@ class Property(TimeStampedUUIDModel):
 
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
-        self.description = str.description(self.description)
+        self.description = str.capitalize(self.description)
         self.ref_code = "".join(random.choices(string.ascii_uppercase + string.digits, k=10))
         super(Property, self).save(*args, **kwargs)
 
